@@ -1,0 +1,133 @@
+<!DOCTYPE html
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Game RPG</title>
+		
+		<style>
+		
+		*{
+		padding: 0;
+		margin: 0;
+		box-sizing: border-box;
+		}
+					
+		body{
+		background-color: #222;
+		text-transform: uppercase;
+		color: white;
+		}
+		
+		.botoes{
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		height: 265px;
+		width: 265px;
+		margin-left: 32vw;
+		border: 2px solid white;
+		position: relative;
+		background: linear-gradient(90deg, #000, #111, #222, #333, #444);
+		}
+		
+		.seta{
+		width: 85px;
+		height: 85px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		}
+		
+		.seta ion-icon{
+		width: 95px;
+		height: 95px;
+		color: white;
+		}
+		
+		.cima{
+		position: absolute;
+		top: 0;
+		}
+		
+		.baixo{
+		position: absolute;
+		bottom: 0;
+		}
+		
+		.esquerda{
+		position: absolute;
+		left: 0;
+		}
+		
+		.direita{
+		position: absolute;
+		right: 0;
+		}
+		
+		.tela{
+		width: 90vw;
+		height: 55vh;
+		margin-left: 5vw;
+		background-image: url(./IMG/chao.jpg);
+		border: 3px solid white;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		}
+		
+		.personagem{
+		width: 111px;
+		height: 111px;
+		}
+					
+		</style>
+	</head>
+	
+	<body>
+		
+		<main class="tela">
+		
+			<img class="personagem" src="./IMG/personagem.png"/>
+		
+		</main>
+		
+		<div class="botoes">
+			
+			<div class="seta cima">
+				<ion-icon name="arrow-up-circle"></ion-icon>
+			</div>
+			
+			<div class="seta direita">
+				<ion-icon name="arrow-forward-circle"></ion-icon>
+			</div>
+			
+			<div class="seta meio">
+				<ion-icon name="ellipse"></ion-icon>
+			</div>
+			
+			<div class="seta baixo">
+				<ion-icon name="arrow-down-circle"></ion-icon>
+			</div>
+			
+			<div class="seta esquerda">
+				<ion-icon name="arrow-back-circle"></ion-icon>
+			</div>
+			
+		</div>
+		
+	</body>
+	
+	<script>
+		
+		
+		
+	</script>
+	
+	<body><script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script></body>
+	
+</html>
