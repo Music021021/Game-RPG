@@ -81,6 +81,11 @@
 		.personagem{
 		width: 111px;
 		height: 111px;
+		transition: 150ms;
+		}
+		
+		.andarCima{
+		margin-bottom: 20px;
 		}
 					
 		</style>
@@ -121,8 +126,36 @@
 	</body>
 	
 	<script>
-		
-		
+	
+	var personagem = document.querySelector('.personagem');
+				
+	var setaEsquerda = document.querySelector('.esquerda');
+	setaEsquerda.addEventListener('click', () => {
+		personagem.style.rotate = '90deg';
+		var moverEsquerda = parseInt(personagem.style.marginLeft) || 0;
+		personagem.style.marginLeft = (moverEsquerda - 30) + "px";
+	});
+	
+	var setaDireita = document.querySelector('.direita');
+	setaDireita.addEventListener('click', () => {
+		personagem.style.rotate = '270deg';
+		var moverDireita = parseInt(personagem.style.marginRight) || 0;
+		personagem.style.marginRight = (moverDireita - 30) + "px";
+	});
+	
+	var setaCima = document.querySelector('.cima');
+	setaCima.addEventListener('click', () => {
+		personagem.style.rotate = '180deg';
+		var moverCima = parseInt(personagem.style.marginTop) || 0;
+		personagem.style.marginTop = (moverCima - 30) + "px";
+	});
+	
+	var setaBaixo = document.querySelector('.baixo');
+	setaBaixo.addEventListener('click', () => {
+		personagem.style.rotate = '0deg';
+		var moverBaixo = parseInt(personagem.style.marginBottom) || 0;
+		personagem.style.marginBottom = (moverBaixo - 30) + "px";
+	});
 		
 	</script>
 	
