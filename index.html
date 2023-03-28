@@ -29,7 +29,7 @@
 		width: 415px;
 		height: 400px;
 		border: 1px solid;
-		background-image: url(./IMG/chao.jpg);
+		background-image: url(./IMG/fundo.jpg);
 		background-size: cover;
 		}
 		
@@ -44,6 +44,7 @@
 		width: 112.5px;
 		height: 100px;
 		position: absolute;
+		transition: 0.5s;
 		}
 		
 		.position-teclado{
@@ -179,18 +180,22 @@
 	
 	function moverUp(){
 	moverCaracter(caracter.x, caracter.y - 1);
+	personagem.style.rotate = '180deg';
 	}
 	
 	function moverDown(){
 	moverCaracter(caracter.x, caracter.y + 1);
+	caracterElement.style.rotate = '0deg';
 	}
 	
 	function moverBack(){
 	moverCaracter(caracter.x - 1, caracter.y);
+	caracterElement.style.rotate = '90deg';
 	}
 	
 	function moverForward(){
 	moverCaracter(caracter.x + 1, caracter.y);
+	caracterElement.style.rotate = '270deg';
 	}
 	
 	</script>
