@@ -17,146 +17,180 @@
 		background-color: #222;
 		text-transform: uppercase;
 		color: white;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+        display: flex;
+        flex-direction: column;
 		}
 		
-		.botoes{
+		/* MAP */
+					
+		#map{
 		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: center;
-		height: 265px;
-		width: 265px;
-		position: relative;
+		flex-wrap: wrap;
+		width: 415px;
+		height: 400px;
+		border: 1px solid;
 		}
 		
-		.seta{
-		width: 85px;
-		height: 85px;
+		.cell{
+		width: 80px;
+		height: 80px;
+		background-color: #222;
+		border: 1px solid white;
+		}
+		
+		.personagem{
+		width: 112.5px;
+		height: 100px;
+		position: absolute;
+		}
+		
+		.position-teclado{
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		cursor: pointer;
 		}
 		
-		.seta ion-icon{
-		width: 95px;
-		height: 95px;
-		color: white;
+		.teclado{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 250px;
+		height: 250px;
+		border: 2px solid white;
+		position: relative;
 		}
 		
-		.cima{
+		.botoes{
+		width: 80px;
+		height: 80px;
 		position: absolute;
+		border: 1px solid white;
+		}
+		
+		.up{
 		top: 0;
 		}
 		
-		.baixo{
-		position: absolute;
+		.down{
 		bottom: 0;
 		}
 		
-		.esquerda{
-		position: absolute;
-		left: 0;
-		}
-		
-		.direita{
-		position: absolute;
+		.forward{
 		right: 0;
 		}
 		
-		.tela{
-		width: 90vw;
-		height: 55vh;
-		background-image: url(./IMG/chao.jpg);
-		border: 3px solid white;
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		.back{
+		left: 0;
 		}
 		
-		.personagem{
-		width: 111px;
-		height: 111px;
-		transition: 150ms;
-		}
-		
-		.andarCima{
-		margin-bottom: 20px;
-		}
-					
 		</style>
 	</head>
 	
 	<body>
 		
-		<main class="tela">
+		<div id="map">
 		
 			<img class="personagem" src="./IMG/personagem.png"/>
 		
-		</main>
+		</div>
 		
-		<div class="botoes">
+		<nav class="position-teclado">	
+		<div class="teclado">
 			
-			<div class="seta cima">
-				<ion-icon name="arrow-up-circle"></ion-icon>
-			</div>
-			
-			<div class="seta direita">
-				<ion-icon name="arrow-forward-circle"></ion-icon>
-			</div>
-			
-			<div class="seta meio">
-				<ion-icon name="ellipse"></ion-icon>
-			</div>
-			
-			<div class="seta baixo">
-				<ion-icon name="arrow-down-circle"></ion-icon>
-			</div>
-			
-			<div class="seta esquerda">
-				<ion-icon name="arrow-back-circle"></ion-icon>
-			</div>
+			<ion-icon class="botoes up" name="arrow-up"></ion-icon>
+			<ion-icon class="botoes down" name="arrow-down"></ion-icon>
+			<ion-icon class="botoes forward" name="arrow-forward"></ion-icon>
+			<ion-icon class="botoes back" name="arrow-back"></ion-icon>
 			
 		</div>
+		</nav>
 		
 	</body>
 	
 	<script>
 	
-	var personagem = document.querySelector('.personagem');
-				
-	var setaEsquerda = document.querySelector('.esquerda');
-	setaEsquerda.addEventListener('click', () => {
-		personagem.style.rotate = '90deg';
-		var moverEsquerda = parseInt(personagem.style.marginLeft) || 0;
-		personagem.style.marginLeft = (moverEsquerda - 30) + "px";
-	});
+	const mapWidth = 4;
+	const mapHeight = 4;
 	
-	var setaDireita = document.querySelector('.direita');
-	setaDireita.addEventListener('click', () => {
-		personagem.style.rotate = '270deg';
-		var moverDireita = parseInt(personagem.style.marginRight) || 0;
-		personagem.style.marginRight = (moverDireita - 30) + "px";
-	});
+	const caracter = {
+		x: 0,
+		y: 0
+	};
 	
-	var setaCima = document.querySelector('.cima');
-	setaCima.addEventListener('click', () => {
-		personagem.style.rotate = '180deg';
-		var moverCima = parseInt(personagem.style.marginTop) || 0;
-		personagem.style.marginTop = (moverCima - 30) + "px";
-	});
-	
-	var setaBaixo = document.querySelector('.baixo');
-	setaBaixo.addEventListener('click', () => {
-		personagem.style.rotate = '0deg';
-		var moverBaixo = parseInt(personagem.style.marginBottom) || 0;
-		personagem.style.marginBottom = (moverBaixo - 30) + "px";
-	});
+	function moverCaracter(x, y){
+		if(x >= 0 && x < mapWidth && y >= 0 && y < mapHeight){
+		caracter.x = x;
+		caracter.y = y;
 		
+		const caracterElement = document.getElementById('caracter');
+		caracterElement.style.left = x * 100 + 'px';
+		caracterElement.style.top = y * 100 + 'px';
+		}
+	}
+	
+	document.addEventListener('keydown', event => {
+		switch (event.key) {
+		case 'ArrowUp':
+			moverCaracter(caracter.x, caracter.y - 1);
+			break;
+		case 'ArrowDown':
+			moverCaracter(caracter.x, caracter.y + 1);
+			break;
+		case 'ArrowLeft':
+			moverCaracter(caracter.x - 1, caracter.y);
+			break;
+		case 'ArrowRight':
+			moverCaracter(caracter.x + 1, caracter.y);
+			break;
+		}
+	});
+	
+	
+	//const mapElement = document.getElementById('map');
+	//const caracterElement = document.createElement('div');
+	//caracterElement.id = 'caracter';
+	//caracterElement.classList.add('caracter');
+	//caracterElement.style.left = caracter.x * 100 + 'px';
+	//caracterElement.style.top = caracter.y * 100 + 'px';
+	//mapElement.appendChild(caracterElement);
+	
+	const mapElement = document.getElementById('map');
+	const caracterElement = document.querySelector('.personagem');
+	caracterElement.id = 'caracter';
+	caracterElement.style.left = caracter.x * 100 + 'px';
+	caracterElement.style.top = caracter.y * 100 + 'px';
+	mapElement.appendChild(caracterElement);
+	
+	// Botoes
+	
+	var botaoUp = document.querySelector('.up');
+	var botaoDown = document.querySelector('.down');
+	var botaoBack = document.querySelector('.back');
+	var botaoForward = document.querySelector('.forward');
+	
+	botaoUp.addEventListener('click', moverUp);
+	botaoDown.addEventListener('click', moverDown);
+	botaoBack.addEventListener('click', moverBack);
+	botaoForward.addEventListener('click', moverForward);
+	
+	function moverUp(){
+	moverCaracter(caracter.x, caracter.y - 1);
+	}
+	
+	function moverDown(){
+	moverCaracter(caracter.x, caracter.y + 1);
+	}
+	
+	function moverBack(){
+	moverCaracter(caracter.x - 1, caracter.y);
+	}
+	
+	function moverForward(){
+	moverCaracter(caracter.x + 1, caracter.y);
+	}
+	
 	</script>
 	
 	<body><script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
