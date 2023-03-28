@@ -33,13 +33,19 @@
 		background-size: cover;
 		}
 		
-		.mesa{
-		width: 112.5px;
-		height: 100px;
+		.cabana{
+		width: 50px;
+		height: 50px;
+		border: 1px solid red;
 		position: absolute;
 		left: 50%;
 		top: 0;
 		transform: translate(-50%, 0);
+		}
+		
+		.img-cabana{
+		width: 100px;
+		height: 100px;
 		}
 		
 		.personagem{
@@ -98,7 +104,8 @@
 		<div id="map">
 		
 			<img class="personagem" src="./IMG/personagem.png"/>
-			<img class="mesa" src="./IMG/mesa.png"/>
+			<div class="cabana"></div>
+			<img class="img-cabana" src="./IMG/cabana.png"/>
 		
 		</div>
 		
@@ -154,14 +161,6 @@
 	});
 	
 	
-	//const mapElement = document.getElementById('map');
-	//const caracterElement = document.createElement('div');
-	//caracterElement.id = 'caracter';
-	//caracterElement.classList.add('caracter');
-	//caracterElement.style.left = caracter.x * 100 + 'px';
-	//caracterElement.style.top = caracter.y * 100 + 'px';
-	//mapElement.appendChild(caracterElement);
-	
 	const mapElement = document.getElementById('map');
 	const caracterElement = document.querySelector('.personagem');
 	caracterElement.id = 'caracter';
@@ -201,22 +200,22 @@
 	caracterElement.style.rotate = '-90deg';
 	}
 	
-	var mesa = document.querySelector('.mesa');
+	var cabana = document.querySelector('.cabana');
 	
 	function detectarColisao() {
-	  var mesaRect = mesa.			getBoundingClientRect();
+	  var cabanaRect = cabana.			getBoundingClientRect();
  	 var personagemRect = caracterElement.getBoundingClientRect();
 
-	  if (mesaRect.right >= personagemRect.left &&
-      mesaRect.left <= personagemRect.right &&
-      mesaRect.bottom >= personagemRect.top &&
-      mesaRect.top <= personagemRect.bottom) {
+	  if (cabanaRect.right >= personagemRect.left &&
+      cabanaRect.left <= personagemRect.right &&
+      cabanaRect.bottom >= personagemRect.top &&
+      cabanaRect.top <= personagemRect.bottom) {
   	  // Impedir o movimento do elemento
    	 window.location.href = "./index.html";
   }
 }
 	
-	setInterval(detectarColisao, 5);
+	setInterval(detectarColisao, 10);
 	
 	</script>
 	
