@@ -81,7 +81,8 @@
 		width: 80px;
 		height: 80px;
 		position: absolute;
-		border: 1px solid white;
+		border: none;
+		/*border: 1px solid white;*/
 		}
 		
 		.up{
@@ -90,6 +91,12 @@
 		
 		.down{
 		bottom: 0;
+		}
+		
+		.user{
+		width: 70px;
+		height: 70px;
+		display: none;
 		}
 		
 		.forward{
@@ -118,6 +125,7 @@
 			
 			<ion-icon class="botoes up" name="arrow-up"></ion-icon>
 			<ion-icon class="botoes down" name="arrow-down"></ion-icon>
+			<ion-icon class="botoes user" name="hand-right"></ion-icon>
 			<ion-icon class="botoes forward" name="arrow-forward"></ion-icon>
 			<ion-icon class="botoes back" name="arrow-back"></ion-icon>
 			
@@ -205,6 +213,7 @@
 	}
 	
 	var cabana = document.querySelector('.cabana');
+
 	
 	function detectarColisao() {
 	  var cabanaRect = cabana.			getBoundingClientRect();
@@ -215,11 +224,23 @@
       cabanaRect.bottom >= personagemRect.top &&
       cabanaRect.top <= personagemRect.bottom) {
   	  // Impedir o movimento do elemento
-   	 window.location.href = "./index2.html";
-  }
+   	user.style.display = 'block';}else{
+   	 user.style.display = 'none';
+   	}
 }
 	
 	setInterval(detectarColisao, 10);
+	
+	
+	//botao de abrir porta
+	
+	var user = document.querySelector('.user');
+	
+	user.addEventListener('click', abrirPorta);
+	
+	function abrirPorta(){
+	window.location.href = "./index2.html";
+	}
 	
 	</script>
 	

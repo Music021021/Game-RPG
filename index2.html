@@ -43,6 +43,24 @@
 		transform: translate( -50%, 0%);
 		}
 		
+		.loja{
+		width: 50px;
+		height: 50px;
+		border: 1px solid white;
+		position: absolute;
+		right: 0;
+		bottom: 50%;
+		}
+		
+		.paginaLoja{
+		display: none;
+		flex-direction: column;
+		background-color: blue;
+		height: 100px;
+		width: 100px;
+		border-radius: 15px;
+		}
+		
 		.img-cabana{
 		width: 200px;
 		height: 200px;
@@ -110,6 +128,8 @@
 			<img class="personagem" src="./IMG/personagem.png"/>
 			<div class="cabana"></div>
 			<img class="img-cabana" src="./IMG/cabana.png"/>
+			<div class="loja"></div>
+			<div class="paginaLoja"></div>
 		
 		</div>
 		
@@ -220,6 +240,33 @@
 }
 	
 	setInterval(detectarColisao, 10);
+	
+	var loja = document.querySelector('.loja');
+	var paginaLoja = document.querySelector('.paginaLoja');
+	
+	function entrarLoja(){
+		var lojaRect = loja.getBoundingClientRect();
+		if(lojaRect.left <= personagemRect.right &&
+		lojaRect.top <= personagemRect.bottom &&
+		lojaRect.right >= personagemRect.left &&
+		lojaRect.bottom >= personagemRect.top){
+			paginaLoja.style.display = "flex";
+		}else{
+			paginaLoja.style.display = "none";
+		}
+	}
+	
+	setInterval(entrarLoja, 10);
+	
+	//botao de abrir porta
+	
+	var user = document.querySelector('.user');
+	
+	user.addEventListener('click', abrirPorta);
+	
+	function abrirPorta(){
+	window.location.href = "./index2.html";
+	}
 	
 	</script>
 	
