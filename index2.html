@@ -30,7 +30,8 @@
 		height: 400px;
 		border: 1px solid;
 		background-image: url(./IMG/chao1.jpg);
-		background-size: cover;
+		background-size: 415px 400px;
+		background-position: center;
 		}
 		
 		.cabana{
@@ -66,7 +67,7 @@
 		height: 200px;
 		position: absolute;
 		left: 50%;
-		top: -10%;
+		top: -8%;
 		transform: translate( -50%, 0%);
 		}
 		
@@ -234,9 +235,10 @@
       cabanaRect.left <= personagemRect.right &&
       cabanaRect.bottom >= personagemRect.top &&
       cabanaRect.top <= personagemRect.bottom) {
-  	  // Impedir o movimento do elemento
-   	 window.location.href = "./index.html";
-  }
+  	  // aparecer o botao de abrir a porta
+   	 user.style.display = 'block';}else{
+   	 user.style.display = 'none';
+   	}
 }
 	
 	setInterval(detectarColisao, 10);
